@@ -1,0 +1,151 @@
+<div
+  class="container mx-auto max-w-[1320px] mt-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center relative gap-4"
+>
+  <div class="flex items-center justify-between w-full sm:w-auto">
+    <h1 class="text-2xl sm:text-3xl font-bold">Exclusive</h1>
+    <button (click)="togglemenu()" class="sm:hidden focus:outline-none ml-4 z-20">
+      <svg
+        *ngIf="!ismenuopen()"
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+      <svg
+        *ngIf="ismenuopen()"
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    *ngIf="ismenuopen()"
+    class="sm:hidden bg-white shadow-lg rounded-lg p-4 space-y-2 top-full left-0 right-0 absolute z-10 w-full max-w-[calc(100vw-2rem)] mx-auto"
+  >
+    <ul class="flex flex-col space-y-2">
+      <li>
+        <button class="block w-full text-left hover:text-blue-500 transition-colors py-2">
+          Home
+        </button>
+      </li>
+      <li>
+        <button class="block w-full text-left hover:text-blue-500 transition-colors py-2">
+          Contact
+        </button>
+      </li>
+      <li>
+        <button class="block w-full text-left hover:text-blue-500 transition-colors py-2">
+          About
+        </button>
+      </li>
+      <li>
+        <button
+          (click)="navigateToSignup()"
+          [class.underline]="isActiveRoute('/signup')"
+          class="block w-full text-left hover:text-blue-500 transition-colors py-2"
+        >
+          Sign Up
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <div class="hidden sm:block w-full sm:w-auto">
+    <ul
+      class="flex flex-wrap sm:flex-nowrap space-x-2 sm:space-x-6 lg:space-x-10 items-center justify-center"
+    >
+      <li>
+        <button
+          (click)="navigateToHome()"
+          [class.underline]="isActiveRoute('/')"
+          class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base"
+        >
+          Home
+        </button>
+      </li>
+      <li>
+        <button class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base">
+          Contact
+        </button>
+      </li>
+      <li>
+        <button class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base">
+          About
+        </button>
+      </li>
+      <li>
+        <button
+          (click)="navigateToSignup()"
+          [class.underline]="isActiveRoute('/signup')"
+          class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base"
+        >
+          Sign Up
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="w-full sm:w-auto flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 gap-4"
+  >
+    <div class="relative w-full sm:w-48 md:w-64 lg:w-80 xl:w-96">
+      <input
+        type="text"
+        placeholder="What are you looking for?"
+        class="pl-5 pr-12 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full text-sm font-medium placeholder-gray-500 focus:placeholder-gray-500"
+      />
+      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+        <i class="fa-solid fa-magnifying-glass text-gray-400 text-xl"></i>
+      </div>
+    </div>
+
+    <div class="flex space-x-4" *ngIf="!isActiveRoute('/signup') && !isActiveRoute('/login')">
+      <div class="">
+        <button
+          (click)="navigateToWishlist()"
+          class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1 hover:bg-gray-100"
+        >
+          <i class="fa-regular fa-heart text-xl"></i>
+        </button>
+      </div>
+
+      <div class="">
+        <button
+          class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1 hover:bg-gray-100"
+        >
+          <i class="fa-solid fa-cart-shopping text-xl"></i>
+        </button>
+      </div>
+      <div class="">
+        <button
+          class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1 hover:bg-gray-100"
+        >
+          <i class="fa-regular fa-user text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="mt-4" />

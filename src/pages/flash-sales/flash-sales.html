@@ -1,0 +1,172 @@
+<div class="container mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8 mt-5">
+  <div class="flex items-center gap-2">
+    <div class="bg-red-500 w-4 h-8 rounded-sm"></div>
+    <p class="text-red-500 font-bold">Today's</p>
+  </div>
+
+  <div class="mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full sm:w-auto">
+      <div class="text-2xl sm:text-3xl md:text-4xl font-bold">Flash Sales</div>
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+        <p class="flex flex-col text-center text-sm sm:text-base md:text-xl font-bold min-w-[60px]">
+          <span class="text-xs">Days</span>{{ days | number : '2.0' }}
+        </p>
+        <span class="text-sm sm:text-base md:text-xl font-bold">:</span>
+        <p class="flex flex-col text-center text-sm sm:text-base md:text-xl font-bold min-w-[60px]">
+          <span class="text-xs">Hours</span>{{ hours | number : '2.0' }}
+        </p>
+        <span class="text-sm sm:text-base md:text-xl font-bold">:</span>
+        <p class="flex flex-col text-center text-sm sm:text-base md:text-xl font-bold min-w-[60px]">
+          <span class="text-xs">Minutes</span>{{ minutes | number : '2.0' }}
+        </p>
+        <span class="text-sm sm:text-base md:text-xl font-bold">:</span>
+        <p class="flex flex-col text-center text-sm sm:text-base md:text-xl font-bold min-w-[60px]">
+          <span class="text-xs">Seconds</span>{{ seconds | number : '2.0' }}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 self-end">
+      <div>
+        <button class="bg-gray-300 rounded-full p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-4 sm:size-5 md:size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div>
+        <button class="bg-gray-300 rounded-full p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-4 sm:size-5 md:size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 sm:gap-16 md:gap-20 mt-6 mb-10"
+  >
+    <!-- Product cards will be generated from mock data -->
+    <div
+      *ngFor="let sale of flashSalesProducts; let i = index"
+      class="bg-gray-100 py-3 sm:py-4 md:py-5 w-full max-w-[250px] h-[180px] sm:h-[200px] md:h-[230px] rounded-sm flex flex-col items-center justify-center relative mt-8 mx-auto"
+    >
+      <img
+        [src]="sale.products[0]?.image"
+        [alt]="sale.products[0]?.name"
+        class="w-[110px] sm:w-[120px] md:w-[130px] h-auto object-contain"
+      />
+
+      <div
+        class="bg-red-500 w-10 h-5 sm:w-12 sm:h-6 rounded-md absolute top-0 left-0 m-3 sm:m-4 py-0.5 sm:py-1 flex items-center justify-center"
+      >
+        <p class="text-white text-xs sm:text-sm text-center">
+          {{ calculateDiscount(sale.products[0]) }}%
+        </p>
+      </div>
+
+      <div class="absolute top-0 right-0 m-3 sm:m-4 space-y-1 sm:space-y-2">
+        <div class="bg-white rounded-full p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-4 sm:size-5 md:size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+            />
+          </svg>
+        </div>
+
+        <div class="bg-white rounded-full p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-4 sm:size-5 md:size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div
+        class="bg-white w-full h-[90px] sm:h-[100px] rounded-sm absolute top-full left-0 py-1 sm:py-2 px-1 sm:px-2 space-y-1"
+      >
+        <p class="text-sm sm:text-base font-semibold truncate">{{ sale.products[0]?.name }}</p>
+        <p class="text-xs sm:text-sm">
+          <span class="text-red-500">${{ sale.products[0]?.discountedPrice }}</span
+          ><span class="text-gray-500 ml-1 sm:ml-2 line-through"
+            >${{ sale.products[0]?.price }}</span
+          >
+        </p>
+        <div class="flex gap-0.5 sm:gap-1">
+          <ng-container *ngFor="let star of renderStars(sale.products[0]?.rating); let i = index">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-4 sm:size-5 md:size-6"
+              [ngClass]="star === 'full' ? 'text-[#FFAD33]' : 'text-gray-300'"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </ng-container>
+          <span class="text-xs sm:text-sm">({{ sale.products[0]?.rating * 20 }})</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-32 sm:mt-32 md:mt-32">
+    <button
+      class="bg-red-500 hover:bg-red-600 w-[150px] sm:w-[180px] md:w-[200px] h-[40px] sm:h-[45px] md:h-[50px] text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-md font-medium text-sm sm:text-base"
+    >
+      View All Products
+    </button>
+  </div>
+</div>
