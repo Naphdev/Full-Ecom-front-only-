@@ -35,5 +35,13 @@ export class Navbar {
   navigateToWishlist() {
     this.router.navigate(['/wishlist']);
   }
+
+  navigateToCart() {
+    this.router.navigate(['/cart']);
+  }
+
+  navigateToAbout() {
+    this.router.navigate(['/about']);
+  }
   
 }

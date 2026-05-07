@@ -1,4 +1,47 @@
 <app-summer-sale></app-summer-sale>
 <app-navbar></app-navbar>
-<p>wishlist works!</p>
+<div class="container mx-auto max-w-[1320px] p-4 sm:px-6 lg:px-8 mt-10">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl">Wishlist({{ wishlistProducts.length }})</h1>
+    <button (click)="moveAllToBag()" class="text-black border border-black py-4 px-12 rounded">Move All To Cart</button>
+  </div>
+
+  <div *ngIf="wishlistProducts.length > 0; else emptyWishlist">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-10 sm:gap-16 md:gap-20 mt-6 mb-10"
+    >
+      <!-- Dynamic Products -->
+      <app-product-card
+        *ngFor="let product of wishlistProducts;"
+        [product]="product"
+        variant="wishlist"
+        (addToCart)="onAddToCart($event)"
+        (removeFromWishlist)="onRemoveFromWishlist($event)"
+      ></app-product-card>
+    </div>
+  </div>
+
+  <ng-template #emptyWishlist>
+    <div class="text-center py-10">
+      <h2 class="text-xl font-semibold">Your wishlist is empty</h2>
+      <p class="mt-2 text-gray-600">Add some items to your wishlist</p>
+    </div>
+  </ng-template>
+
+  <div class="mt-44">
+    <div class="flex justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <div class="bg-red-500 w-3 h-6 sm:w-4 sm:h-8 rounded-sm"></div>
+        <p class="font-semibold text-sm sm:text-lg">Just For You</p>
+      </div>
+
+      <div>
+        <button class="text-black border border-black py-4 px-12 rounded">See All</button>
+      </div>
+    </div>
+  </div>
+
+  <app-just-for-you></app-just-for-you>
+
+</div>
 <app-footer></app-footer>

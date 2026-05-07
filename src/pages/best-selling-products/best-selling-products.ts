@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { EcomService } from '../../services/Ecom-service';
 import { CommonModule } from '@angular/common';
+import { ProductCard } from '../product-card/product-card';
 
 @Component({
   selector: 'app-best-selling-products',
-  imports: [ CommonModule ],
+  imports: [CommonModule, ProductCard],
   templateUrl: './best-selling-products.html',
   styleUrl: './best-selling-products.css',
 })
@@ -28,5 +29,15 @@ export class BestSellingProducts {
         console.error('Error loading best selling products:', error);
       }
     });
+  }
+
+  onAddToCart(product: any) {
+    console.log('Add to cart clicked', product);
+    // Add actual cart functionality here
+  }
+
+  onAddToWishlist(product: any) {
+    console.log('Add to wishlist clicked', product);
+    // Add actual wishlist functionality here
   }
 }

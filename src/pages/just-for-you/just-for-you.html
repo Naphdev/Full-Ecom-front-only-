@@ -1,0 +1,23 @@
+<div class="container mx-auto max-w-[1320px] p-4 sm:px-6 lg:px-8">
+  <div *ngIf="productsForYou.length > 0; else emptyProductsForYou">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-10 sm:gap-16 md:gap-20 mt-6 mb-10"
+    >
+      <!-- Dynamic Products -->
+      <app-product-card
+        *ngFor="let product of productsForYou"
+        [product]="product"
+        variant="default"
+        (addToCart)="onAddToCart($event)"
+        (addToWishlist)="onAddToWishlist($event)"
+      ></app-product-card>
+    </div>
+  </div>
+
+  <ng-template #emptyProductsForYou>
+    <div class="text-center py-10">
+      <h2 class="text-xl font-semibold">No products found</h2>
+      <p class="mt-2 text-gray-600">Check back later for recommendations</p>
+    </div>
+  </ng-template>
+</div>

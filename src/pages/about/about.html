@@ -1,0 +1,95 @@
+<app-summer-sale></app-summer-sale>
+<app-navbar></app-navbar>
+<div class="container mx-auto max-w-[1320px] p-4 sm:px-6 lg:px-8 mt-10">
+  <div>
+    <ul class="flex gap-4">
+      <li><a href="/" class="text-gray-400">Home</a></li>
+      <li>/</li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-8 md:px-0">
+    <div class="space-y-8">
+      <h4 class="text-2xl md:text-5xl font-semibold">Our Story</h4>
+      <div class="space-y-4">
+        <p>
+          Launched in 2015, Exclusive is South Asia’s premier online shopping <br />
+          marketplace with an active presence in Bangladesh. Supported <br />
+          by a wide range of tailored marketing, data, and service solutions, <br />
+          Exclusive has 10,500 sellers and 300 brands, serving 3 <br />
+          million customers across the region.
+        </p>
+        <p>
+          Exclusive has more than 1 Million products to offer, growing at a <br />
+          very fast. Exclusive offers a diverse assotment in categories <br />
+          ranging from consumer.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <img src="../../assets/about-img/ab1.png" alt="about us" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-24 place-items-center mt-10">
+    <div
+      *ngFor="let item of items"
+      class="group w-full h-full min-h-[220px] flex flex-col items-center justify-center gap-4 border border-gray-300 rounded-md p-8 transition duration-300 hover:bg-red-500"
+    >
+      <div
+        class="bg-gray-200 rounded-full p-6 flex items-center justify-center w-[80px] h-[80px] transition duration-300 group-hover:bg-red-400"
+      >
+        <div
+          class="bg-black rounded-full p-4 flex items-center justify-center w-[50px] h-[50px] transition duration-300 group-hover:bg-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-5 text-white transition duration-300 group-hover:text-red-500"
+          >
+            <path *ngFor="let path of getSvgPaths(item.icon)" [attr.d]="path" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="text-center transition duration-300 group-hover:text-white">
+        <p class="text-lg md:text-2xl font-bold">{{ item.value }}</p>
+        <p class="text-sm md:text-md font-semibold">{{ item.title }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-24 place-items-center mt-12">
+    <div *ngFor="let person of people" class="space-y-6">
+      <div class="bg-[#F5F5F5] w-[280px] h-[340px] lg:w-[370px] lg:h-[400px] flex justify-center items-end rounded-sm">
+        <img src="{{ person.image }}" alt="about us" class="h-[300px] lg:h-[350px]" />
+      </div>
+      <div>
+        <h4 class="text-2xl md:text-3xl font-semibold">{{ person.name }}</h4>
+        <p class="text-lg md:text-xl font-medium">{{ person.title }}</p>
+      </div>
+      <div>
+        <div class="flex gap-4">
+          <a href="#"><i class="fab fa-twitter text-2xl"></i></a>
+          <a href="#"><i class="fab fa-instagram text-2xl"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in text-2xl"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center space-x-2 mt-8">
+    <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-500"></span>
+    <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-500"></span>
+    <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-orange-600 border-white border-2"></span>
+    <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-500"></span>
+    <span class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-500"></span>
+  </div>
+
+  <app-service-features></app-service-features>
+</div>
+
+<app-footer></app-footer>

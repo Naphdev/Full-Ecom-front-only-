@@ -1,33 +1,44 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { EcomService } from '../../services/Ecom-service';
+import { ProductCard } from "../product-card/product-card";
 
 @Component({
   selector: 'app-flash-sales',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductCard],
   templateUrl: './flash-sales.html',
   styleUrl: './flash-sales.css',
 })
 export class FlashSales implements OnInit {
-  
+
   // Countdown timer variables
   days: number = 3;
   hours: number = 23;
   minutes: number = 19;
   seconds: number = 56;
-  
+
   // Flash sales products data
   flashSalesProducts: any[] = [];
-  
-  constructor(private ecomService: EcomService) {}
+
+  constructor(private ecomService: EcomService) { }
 
 
   ngOnInit() {
     this.startCountdownTimer();
     this.loadFlashSalesData();
   }
-  
+
+  onAddToCart(product: any) {
+    console.log('Add to cart clicked', product);
+    // Add actual cart functionality here
+  }
+
+  onAddToWishlist(product: any) {
+    console.log('Add to wishlist clicked', product);
+    // Add actual wishlist functionality here
+  }
+
   loadFlashSalesData() {
     this.ecomService.getFlashSalesDetail().subscribe({
       next: (response) => {
@@ -40,29 +51,13 @@ export class FlashSales implements OnInit {
       }
     });
   }
-  
+
   calculateDiscount(product: any): number {
     if (!product || !product.price || !product.discountedPrice) return 0;
     const discount = ((product.price - product.discountedPrice) / product.price) * 100;
     return Math.round(discount);
   }
-  
-  renderStars(rating: number): string[] {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) {
-        stars.push('full');
-      } else if (i === fullStars && hasHalfStar) {
-        stars.push('half');
-      } else {
-        stars.push('empty');
-      }
-    }
-    return stars;
-  }
+
 
   startCountdownTimer() {
     // Simulate the countdown decreasing

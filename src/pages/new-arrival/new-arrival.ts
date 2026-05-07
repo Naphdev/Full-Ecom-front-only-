@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ServiceFeatures } from "../service-features/service-features";
 
 @Component({
   selector: 'app-new-arrival',
-  imports: [],
+  imports: [ServiceFeatures],
   templateUrl: './new-arrival.html',
   styleUrl: './new-arrival.css',
 })
