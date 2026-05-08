@@ -49,12 +49,12 @@
         </button>
       </li>
       <li>
-        <button class="block w-full text-left hover:text-blue-500 transition-colors py-2">
+        <button (click)="navigateToContact()" [class.underline]="isActiveRoute('/contact')" class="block w-full text-left hover:text-blue-500 transition-colors py-2">
           Contact
         </button>
       </li>
       <li>
-        <button (click)="navigateToAbout()" class="block w-full text-left hover:text-blue-500 transition-colors py-2">
+        <button (click)="navigateToAbout()" [class.underline]="isActiveRoute('/about')" class="block w-full text-left hover:text-blue-500 transition-colors py-2">
           About
         </button>
       </li>
@@ -85,7 +85,10 @@
         </button>
       </li>
       <li>
-        <button class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base">
+        <button
+          (click)="navigateToContact()"
+          [class.underline]="isActiveRoute('/contact')"
+          class="hover:text-blue-500 transition-colors py-2 text-sm sm:text-base">
           Contact
         </button>
       </li>
@@ -155,7 +158,7 @@
       </div>
 
       <div class="">
-        <button (click)="navigateToCart()"
+        <button
           class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1 hover:bg-gray-100"
         >
           <svg

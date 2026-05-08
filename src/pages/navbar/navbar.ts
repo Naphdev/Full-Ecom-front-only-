@@ -43,5 +43,9 @@ export class Navbar {
   navigateToAbout() {
     this.router.navigate(['/about']);
   }
+
+  navigateToContact() {
+    this.router.navigate(['/contact']);
+  }
   
 }

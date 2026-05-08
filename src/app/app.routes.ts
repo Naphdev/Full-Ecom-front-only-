@@ -6,6 +6,7 @@ import { Wishlist } from '../pages/wishlist/wishlist';
 import { Cart } from '../pages/cart/cart';
 import { About } from '../pages/about/about';
 import { Account } from '../pages/account/account';
+import { Contact } from '../pages/contact/contact';
 
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'cart', component: Cart },
     { path: 'about', component: About },
     { path: 'account', component: Account },
+    { path: 'contact', component: Contact },
     
 ];
